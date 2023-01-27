@@ -31,6 +31,8 @@ private:
 	double AntitheticMCPricer();
 
 	double AnalyticGeoAvgPricer();
+
+	double Payoff(double S);
 };
 
 #endif // !AsianOption.H

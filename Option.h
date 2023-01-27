@@ -3,6 +3,7 @@
 #define Option_H
 
 #include <string>
+#include "MathUtilities.h"
 
 class Option {
 protected:

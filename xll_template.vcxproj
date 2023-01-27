@@ -96,12 +96,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AsianOption.cpp" />
+    <ClCompile Include="MathUtilities.cpp" />
     <ClCompile Include="MyRandom.cpp" />
     <ClCompile Include="Option.cpp" />
     <ClCompile Include="xll_template.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsianOption.h" />
+    <ClInclude Include="MathUtilities.h" />
     <ClInclude Include="MyRandom.h" />
     <ClInclude Include="Option.h" />
     <ClInclude Include="xll_template.h" />
