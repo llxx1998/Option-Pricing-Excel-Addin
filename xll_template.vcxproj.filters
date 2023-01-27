@@ -18,9 +18,27 @@
     <ClCompile Include="xll_template.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AsianOption.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Option.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyRandom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="xll_template.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AsianOption.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Option.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyRandom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
