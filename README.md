@@ -7,14 +7,14 @@ After importing the Excel Add-in, the pricing functions for different kind of op
 To date, the following derivatives and corresponding methods are covered:
 
 **Asian Option**
-- Monte Carlo Simulation
-- Monte Carlo Simulation with Antithetic Sampling
-- Geometric Average Analytic Pricer
-- Binary Tree (upcoming)
+-- Monte Carlo Simulation
+-- Monte Carlo Simulation with Antithetic Sampling
+-- Geometric Average Analytic Pricer
+-- Binary Tree (upcoming)
 
 **American Option**
-- PDE Approach
-- Binary Tree (upcoming)
+-- PDE Approach
+-- Binary Tree (upcoming)
 
 Special thanks for the Excel XLL Template from K. Lewis. This repo is for educational purpose only. 
 
