@@ -10,13 +10,13 @@ public:
 	int m;
 	double K;
 	int n;
-
-private:
+	std::string method;
+	
 	AsianOption() : Option(), m(12), K(100), n(10000) {};
 
-	AsianOption(int iscall, double r, double sig, double S_0, double T, int m, double K, int n) :
+	AsianOption(int iscall, double r, double sig, double S_0, double T, int m, double K, int n, std::string method) :
 		Option(iscall, r, sig, S_0, T),
-		m(m), K(K), n(n) {};
+		m(m), K(K), n(n), method(method) {};
 
 	~AsianOption();
 
@@ -24,7 +24,7 @@ private:
 
 	AsianOption& operator = (const AsianOption& source);
 
-	double Pricer(std::string method);
+	double Pricer();
 
 	double DefaultMCPricer();
 

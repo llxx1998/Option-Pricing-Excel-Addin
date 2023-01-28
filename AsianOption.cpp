@@ -40,7 +40,7 @@ double AsianOption::DefaultMCPricer() {
 	std::vector<double> S_sum(n, 0.0);
 	std::vector<double> z;
 
-	for (int i = 0; i < m; ++i) {
+	for (int j = 0; j < m; ++j) {
 		z = BoxMullerVector(n);
 		for (int i = 0; i < n; ++i) {
 			z[i] = z[i] * (sig * sqrt(T / m)); // sig * D_t * W(t)
@@ -61,7 +61,7 @@ double AsianOption::DefaultMCPricer() {
 		S_sum[i] *= D;
 	}
 		
-	double price = double(std::accumulate(S_sum.begin(), S_sum.end(), 0)) / n;
+	double price = double(std::accumulate(S_sum.begin(), S_sum.end(), 0.0)) / n;
 
 	return price;
 }
@@ -72,7 +72,7 @@ double AsianOption::AnalyticGeoAvgPricer() {
 	double T_bar = std::accumulate(time_series.begin(), time_series.end(), 0.0) / m;
 
 	double s1_dot_s2 = 0;
-	for (int i = 0; i < m; ++i) s1_dot_s2 += (2 * i + 1) * time_series[m - 1 - i];
+	for (int i = 0; i < m; ++i) s1_dot_s2 += (2 * i + 1) * time_series[time_series.size() - i - 1];
 
 	double sig2_bar, sig_bar, delta, d1, d2;
 	sig2_bar = (pow(sig, 2) / (pow(m, 2) * T_bar)) * s1_dot_s2;
@@ -99,7 +99,7 @@ double AsianOption::AntitheticMCPricer() {
 	std::vector<double> S_prod(n, 1.0);
 	std::vector<double> z;
 
-	for (int i = 0; i < m; ++i) {
+	for (int j = 0; j < m; ++j) {
 		z = BoxMullerVector(n);
 		for (int i = 0; i < n; ++i) {
 			z[i] = z[i] * (sig * sqrt(T / m)); // sig * D_t * W(t)
@@ -118,7 +118,7 @@ double AsianOption::AntitheticMCPricer() {
 	double D = exp(-r * T); // Discount factor
 
 	for (int i = 0; i < S_sum.size(); ++i) {
-		C_vec.push_back(D * Payoff(S_sum[i] / m));
+		C_vec.push_back(D * Payoff(S_sum[i] / double(m)));
 		Geo_C.push_back(D * Payoff(pow(S_prod[i], 1 / m)));
 	}
 
@@ -129,7 +129,7 @@ double AsianOption::AntitheticMCPricer() {
 	return std::accumulate(C_vec.begin(), C_vec.end(), 0.0) / double(C_vec.size());
 }
 
-double AsianOption::Pricer(std::string method) {
+double AsianOption::Pricer() {
 	if (method == "Antithetic") return AntitheticMCPricer();
 	return DefaultMCPricer();
 }

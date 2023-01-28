@@ -1,6 +1,7 @@
 ﻿// xll_template.cpp - Sample xll project.
 #include <cmath> // for double tgamma(double)
 #include "xll_template.h"
+#include "AsianOption.h"
 
 using namespace xll;
 
@@ -32,6 +33,39 @@ double WINAPI xll_tgamma(double x)
 
 	return tgamma(x);
 }
+
+
+AddIn AsianOptionPricer(
+	// Return double, C++ name of function, Excel name.
+	Function(XLL_DOUBLE, "AsianOptionXLL", "AsianOption")
+	// Array of function arguments.
+	.Arguments({
+		Arg(XLL_WORD, "iscall", "1 for call 0 for put"),
+		Arg(XLL_DOUBLE, "r", "annual risk free rate"),
+		Arg(XLL_DOUBLE, "sig", "annual volatility"),
+		Arg(XLL_DOUBLE, "S_0", "spot price"),
+		Arg(XLL_DOUBLE, "T", "time to maturity (year)"),
+		Arg(XLL_LONG, "m", "monte carlo granularity"),
+		Arg(XLL_DOUBLE, "K", "strike"),
+		Arg(XLL_LONG, "n", "simulation number"),
+		Arg(XLL_CSTRING4, "method", "Antithetic/Default")
+		})
+	// Function Wizard help.
+	.FunctionHelp("Return the option price.")
+	// Function Wizard category.
+	.Category("OptionPricer")
+	//
+	.Documentation("This function is used to price Asian Options.")
+);
+// WINAPI calling convention must be specified
+double WINAPI AsianOptionXLL(int iscall, double r, double sig, double S_0, double T, int m, double K, int n, char* method)
+{
+#pragma XLLEXPORT // must be specified to export function
+
+	AsianOption asop(iscall, r, sig, S_0, T, m, K, n, method);
+	return asop.Pricer();
+}
+
 
 // Press Alt-F8 then type 'XLL.MACRO' to call 'xll_macro'
 // See https://xlladdins.github.io/Excel4Macros/
