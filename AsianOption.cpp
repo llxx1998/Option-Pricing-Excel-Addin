@@ -97,7 +97,7 @@ double AsianOption::AntitheticMCPricer() {
 	std::vector<double> S_vec(n, S_0);
 	std::vector<double> prev_S_vec(n, S_0);
 	std::vector<double> S_sum(n, 0.0);
-	std::vector<double> S_prod(n, 1.0);
+	std::vector<double> S_prod(n, 0.0);
 	std::vector<double> z;
 
 	for (int j = 0; j < m; ++j) {
@@ -108,7 +108,7 @@ double AsianOption::AntitheticMCPricer() {
 			z[i] = exp(z[i]);
 			S_vec[i] = prev_S_vec[i] * z[i];
 			S_sum[i] += S_vec[i];
-			S_prod[i] *= S_vec[i];
+			S_prod[i] += log(S_vec[i]);
 			prev_S_vec[i] = S_vec[i];
 		}
 	}
@@ -120,7 +120,7 @@ double AsianOption::AntitheticMCPricer() {
 
 	for (int i = 0; i < S_sum.size(); ++i) {
 		C_vec.push_back(D * Payoff(S_sum[i] / double(m)));
-		Geo_C.push_back(D * Payoff(pow(S_prod[i], 1 / m)));
+		Geo_C.push_back(D * Payoff(exp(S_prod[i] / m)));
 	}
 
 	double theo_price = AnalyticGeoAvgPricer();

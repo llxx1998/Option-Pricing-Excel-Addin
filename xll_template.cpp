@@ -62,7 +62,8 @@ double WINAPI AsianOptionXLL(int iscall, double r, double sig, double S_0, doubl
 {
 #pragma XLLEXPORT // must be specified to export function
 
-	AsianOption asop(iscall, r, sig, S_0, T, m, K, n, method);
+	std::cout << std::string(method) << std::endl;
+	AsianOption asop(iscall, r, sig, S_0, T, m, K, n, std::string(method));
 	return asop.Pricer();
 }
 
