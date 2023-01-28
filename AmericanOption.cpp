@@ -105,7 +105,7 @@ double AmericanOption::Pricer() {
 		else {
 			// given no dividend, not exercise early, price it as an European Option
 			// // currently just call bsm function in math utilities
-			return BlackScholesFormula(S, K, r, T, sig, iscall, 0, 0);
+			return BlackScholesFormula(S_0, K, r, T, sig, iscall, 0, 0);
 		}
 	}
 }
