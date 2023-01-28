@@ -44,7 +44,7 @@ double AsianOption::DefaultMCPricer() {
 		z = BoxMullerVector(n);
 		for (int i = 0; i < n; ++i) {
 			z[i] = z[i] * (sig * sqrt(T / m)); // sig * D_t * W(t)
-			z[i] += (r - 0.5 * sqrt(sig)) * T / m;
+			z[i] += (r - 0.5 * pow(sig, 2)) * T / m;
 			z[i] = exp(z[i]);
 			S_vec[i] = prev_S_vec[i] * z[i];
 			S_sum[i] += S_vec[i];
@@ -92,6 +92,7 @@ double AsianOption::AnalyticGeoAvgPricer() {
 	return price;
 }
 
+
 double AsianOption::AntitheticMCPricer() {
 	std::vector<double> S_vec(n, S_0);
 	std::vector<double> prev_S_vec(n, S_0);
@@ -103,7 +104,7 @@ double AsianOption::AntitheticMCPricer() {
 		z = BoxMullerVector(n);
 		for (int i = 0; i < n; ++i) {
 			z[i] = z[i] * (sig * sqrt(T / m)); // sig * D_t * W(t)
-			z[i] += (r - 0.5 * sqrt(sig)) * T / m;
+			z[i] += (r - 0.5 * pow(sig, 2)) * T / m;
 			z[i] = exp(z[i]);
 			S_vec[i] = prev_S_vec[i] * z[i];
 			S_sum[i] += S_vec[i];
