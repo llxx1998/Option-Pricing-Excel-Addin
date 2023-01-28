@@ -19,7 +19,7 @@ double Covariance(const std::vector<double>& v1, const std::vector<double>& v2) 
     return x - Expectation(v1) * Expectation(v2);
 }
 
-double BlackScholesFormula(double S, double K, double r, double T, double sig, int iscall, int div, int isdivdiscrete = 0) {
+double BlackScholesFormula(double S, double K, double r, double T, double sig, int iscall, int div, int isdivdiscrete) {
     double adj_S;
     if (isdivdiscrete) {
         // cash amount
@@ -37,6 +37,6 @@ double BlackScholesFormula(double S, double K, double r, double T, double sig, i
         return adj_S * normalCDF(d1) - K * exp(-r * T) * normalCDF(d2);
     }
     else {
-        return - adj_S *(1 - normalCDF(d1)) + K * exp(-r * T) * (1 - normalCDF(d2));
+        return - adj_S * (1 - normalCDF(d1)) + K * exp(-r * T) * (1 - normalCDF(d2));
     }
 }

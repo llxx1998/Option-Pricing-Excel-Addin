@@ -46,7 +46,7 @@ std::vector<double> TDMASolver(const AhGenerator& ahg, std::vector<double>& d) {
 	std::vector<double> a(ahg.a.begin(), ahg.a.end());
 	std::vector<double> b(ahg.b.begin(), ahg.b.end());
 	std::vector<double> c(ahg.c.begin(), ahg.c.end());
-	int n = d.size();
+	auto n = d.size();
 	c[0] = c[0] / b[0];
 	d[0] = d[0] / b[0];
 
@@ -58,7 +58,7 @@ std::vector<double> TDMASolver(const AhGenerator& ahg, std::vector<double>& d) {
 
 	d[n - 1] = (d[n - 1] - a[n - 2] * d[n - 2]) / (b[n - 1] - a[n - 2] * c[n - 2]);
 	std::vector<double> x = d;
-	for (int i = n - 2; i > -1; --i) {
+	for (auto i = n - 2; i > -1; --i) {
 		x[i] = d[i] - c[i] * x[i + 1];
 	}
 	return x;
@@ -82,7 +82,7 @@ double AmericanOption::PDEAmericanOptionPricer() {
 		for (int i = 1; i < n_x; ++i) Bnh.push_back(mesh[n + 1][i]);
 		Bnh[0] -= -0.5 * pow(sig, 2) * delta_t * K * exp(-r * n * delta_t);
 		auto num = TDMASolver(ahg, Bnh);
-		int bd = 0;
+		double bd = 0;
 		for (int i = 0; i < num.size(); ++i) {
 			if (num[i] < exercise_now[i + 1]) {
 				num[i] = exercise_now[i + 1];
@@ -94,7 +94,8 @@ double AmericanOption::PDEAmericanOptionPricer() {
 	}
 	for (int i = 0; i < n_t + 1; ++i) mesh[i][0] = K;
 	for (int i = 0; i < n_t + 1; ++i) mesh[i][n_x] = 0;
-	return mesh[0][floor(S_0 / delta_x)];
+	int pos = static_cast<int>(std::max((S_0 / delta_x), 0.0));
+	return mesh[0][pos];
 }
 
 double AmericanOption::Pricer() {
@@ -108,4 +109,5 @@ double AmericanOption::Pricer() {
 			return BlackScholesFormula(S_0, K, r, T, sig, iscall, 0, 0);
 		}
 	}
+	return 0.0;
 }

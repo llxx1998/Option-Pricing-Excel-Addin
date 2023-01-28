@@ -2,6 +2,7 @@
 #include <cmath> // for double tgamma(double)
 #include "xll_template.h"
 #include "AsianOption.h"
+#include "AmericanOption.h"
 
 using namespace xll;
 
@@ -65,6 +66,35 @@ double WINAPI AsianOptionXLL(int iscall, double r, double sig, double S_0, doubl
 	std::cout << std::string(method) << std::endl;
 	AsianOption asop(iscall, r, sig, S_0, T, m, K, n, std::string(method));
 	return asop.Pricer();
+}
+
+AddIn AmericanOptionPricer(
+	// Return double, C++ name of function, Excel name.
+	Function(XLL_DOUBLE, "AmericanOptionXLL", "AmericanOption")
+	// Array of function arguments.
+	.Arguments({
+		Arg(XLL_WORD, "iscall", "1 for call 0 for put"),
+		Arg(XLL_DOUBLE, "r", "annual risk free rate"),
+		Arg(XLL_DOUBLE, "sig", "annual volatility"),
+		Arg(XLL_DOUBLE, "S_0", "spot price"),
+		Arg(XLL_DOUBLE, "T", "time to maturity (year)"),
+		Arg(XLL_DOUBLE, "K", "strike"),
+		Arg(XLL_LONG, "mesh_size", "mesh size"),
+		Arg(XLL_CSTRING4, "method", "PDE")
+		})
+	// Function Wizard help.
+	.FunctionHelp("Return the option price.")
+	// Function Wizard category.
+	.Category("OptionPricer")
+	//
+	.Documentation("This function is used to price American Options.")
+);
+// WINAPI calling convention must be specified
+double WINAPI AmericanOptionXLL(int iscall, double r, double sig, double S_0, double T, double K, int mesh_size, char* method)
+{
+#pragma XLLEXPORT // must be specified to export function
+	AmericanOption ameop(iscall, r, sig, S_0, T, K, mesh_size, method, 2 * K);
+	return ameop.Pricer();
 }
 
 
