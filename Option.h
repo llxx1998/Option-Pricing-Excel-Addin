@@ -27,6 +27,8 @@ public:
 	Option(const Option& Opt);
 
 	Option& operator = (const Option& Opt);
+
+	virtual double Pricer() = 0;
 };
 
 #endif // !Option_H

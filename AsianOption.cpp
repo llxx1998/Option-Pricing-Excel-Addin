@@ -11,6 +11,7 @@ AsianOption::AsianOption(const AsianOption& source): Option(source) {
 	m = source.m;
 	K = source.K;
 	n = source.n;
+	method = source.method;
 }
 
 AsianOption& AsianOption::operator = (const AsianOption& source) {
@@ -21,6 +22,7 @@ AsianOption& AsianOption::operator = (const AsianOption& source) {
 	m = source.m;
 	K = source.K;
 	n = source.n;
+	method = source.method;
 
 	return *this;
 }

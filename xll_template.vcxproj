@@ -95,6 +95,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AmericanOption.cpp" />
     <ClCompile Include="AsianOption.cpp" />
     <ClCompile Include="MathUtilities.cpp" />
     <ClCompile Include="MyRandom.cpp" />
@@ -102,6 +103,7 @@
     <ClCompile Include="xll_template.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AmericanOption.h" />
     <ClInclude Include="AsianOption.h" />
     <ClInclude Include="MathUtilities.h" />
     <ClInclude Include="MyRandom.h" />

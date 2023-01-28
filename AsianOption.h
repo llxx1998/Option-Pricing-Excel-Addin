@@ -12,7 +12,7 @@ public:
 	int n;
 	std::string method;
 	
-	AsianOption() : Option(), m(12), K(100), n(10000) {};
+	AsianOption() : Option(), m(12), K(100), n(10000), method("default") {};
 
 	AsianOption(int iscall, double r, double sig, double S_0, double T, int m, double K, int n, std::string method) :
 		Option(iscall, r, sig, S_0, T),

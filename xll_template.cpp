@@ -45,7 +45,7 @@ AddIn AsianOptionPricer(
 		Arg(XLL_DOUBLE, "sig", "annual volatility"),
 		Arg(XLL_DOUBLE, "S_0", "spot price"),
 		Arg(XLL_DOUBLE, "T", "time to maturity (year)"),
-		Arg(XLL_LONG, "m", "monte carlo granularity"),
+		Arg(XLL_LONG, "m", "period number"),
 		Arg(XLL_DOUBLE, "K", "strike"),
 		Arg(XLL_LONG, "n", "simulation number"),
 		Arg(XLL_CSTRING4, "method", "Antithetic/Default")
