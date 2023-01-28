@@ -1,4 +1,4 @@
-Based on the Excel template, this project creates an Excel Addin tool for Asian Option Pricing. The pricer has two modes:
+Based on the Excel Add-in template, this project creates an Excel Addin tool for Asian Option Pricing. The pricer has two modes:
 
 - Antithetic. 
 - Default.
