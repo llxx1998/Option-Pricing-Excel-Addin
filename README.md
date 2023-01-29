@@ -2,8 +2,7 @@ Option pricing related work is gathered together and packaged into Excel Add-in.
 
 After importing the Excel Add-in, the pricing functions for different kind of options can be used directly after specifying method and related parameters. All of the options are under "OptionPricer" function sub category.
 
-<img width="419" alt="Screen Shot 2023-01-28 at 12 00 20" src="https://user-images.githubusercontent.com/51311870/215291202-681561a1-d327-4ace-ad5d-6276febd27ec.png">
-<img width="315.5" alt="Screen Shot 2023-01-29 at 00 40 04" src="https://user-images.githubusercontent.com/51311870/215307366-d4ecf1a6-345b-445e-b63d-0fdde0e2840a.png">
+<img width="315.5" alt="Screen Shot 2023-01-29 at 00 40 04" src="https://user-images.githubusercontent.com/51311870/215307366-d4ecf1a6-345b-445e-b63d-0fdde0e2840a.png"> <img width="419" alt="Screen Shot 2023-01-28 at 12 00 20" src="https://user-images.githubusercontent.com/51311870/215291202-681561a1-d327-4ace-ad5d-6276febd27ec.png">
 
 To date, the following derivatives and corresponding methods are covered:
 
