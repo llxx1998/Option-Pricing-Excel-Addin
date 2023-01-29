@@ -100,7 +100,7 @@
     <ClCompile Include="MathUtilities.cpp" />
     <ClCompile Include="MyRandom.cpp" />
     <ClCompile Include="Option.cpp" />
-    <ClCompile Include="xll_template.cpp" />
+    <ClCompile Include="OptionPricerXLL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AmericanOption.h" />

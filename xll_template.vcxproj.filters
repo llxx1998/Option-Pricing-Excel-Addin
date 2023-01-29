@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="xll_template.cpp">
+    <ClCompile Include="OptionPricerXLL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AsianOption.cpp">

@@ -1,39 +1,9 @@
-﻿// xll_template.cpp - Sample xll project.
-#include <cmath> // for double tgamma(double)
+﻿#include <cmath>
 #include "xll_template.h"
 #include "AsianOption.h"
 #include "AmericanOption.h"
 
 using namespace xll;
-
-AddIn xai_tgamma(
-	// Return double, C++ name of function, Excel name.
-	Function(XLL_DOUBLE, "xll_tgamma", "TGAMMA")
-	// Array of function arguments.
-	.Arguments({
-		Arg(XLL_DOUBLE, "x", "is the value for which you want to calculate Gamma.")
-	})
-	// Function Wizard help.
-	.FunctionHelp("Return the Gamma function value.")
-	// Function Wizard category.
-	.Category("MATH")
-	// URL linked to `Help on this function`.
-	.HelpTopic("https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/tgamma-tgammaf-tgammal")
-	.Documentation(R"xyzyx(
-The <i>Gamma</i> function is \(\Gamma(x) = \int_0^\infty t^{x - 1} e^{-t}\,dt\), \(x \ge 0\).
-If \(n\) is a natural number then \(\Gamma(n + 1) = n! = n(n - 1)\cdots 1\).
-<p>
-Any valid HTML using <a href="https://katex.org/" target="_blank">KaTeX</a> can 
-be used for documentation.
-)xyzyx")
-);
-// WINAPI calling convention must be specified
-double WINAPI xll_tgamma(double x)
-{
-#pragma XLLEXPORT // must be specified to export function
-
-	return tgamma(x);
-}
 
 
 AddIn AsianOptionPricer(
@@ -80,7 +50,8 @@ AddIn AmericanOptionPricer(
 		Arg(XLL_DOUBLE, "T", "time to maturity (year)"),
 		Arg(XLL_DOUBLE, "K", "strike"),
 		Arg(XLL_LONG, "mesh_size", "mesh size"),
-		Arg(XLL_CSTRING4, "method", "PDE")
+		Arg(XLL_DOUBLE, "r_k_ratio", "right boundary over K"),
+		Arg(XLL_CSTRING4, "method", "PDE"),
 		})
 	// Function Wizard help.
 	.FunctionHelp("Return the option price.")
@@ -90,10 +61,10 @@ AddIn AmericanOptionPricer(
 	.Documentation("This function is used to price American Options.")
 );
 // WINAPI calling convention must be specified
-double WINAPI AmericanOptionXLL(int iscall, double r, double sig, double S_0, double T, double K, int mesh_size, char* method)
+double WINAPI AmericanOptionXLL(int iscall, double r, double sig, double S_0, double T, double K, int mesh_size, double r_k_ratio, char* method)
 {
 #pragma XLLEXPORT // must be specified to export function
-	AmericanOption ameop(iscall, r, sig, S_0, T, K, mesh_size, method, 2 * K);
+	AmericanOption ameop(iscall, r, sig, S_0, T, K, mesh_size, std::string(method), r_k_ratio * K);
 	return ameop.Pricer();
 }
 
@@ -123,7 +94,7 @@ int WINAPI xll_macro(void)
 // Use `xsltproc file.xml -o file.html` to create HTML documentation.
 Auto<Open> xao_template_docs([]() {
 
-	return Documentation("MATH", "Documentation for the xll_template add-in.");
+	return Documentation("OptionPricer", "Documentation for the OptionPricer add-in.");
 
 });
 
