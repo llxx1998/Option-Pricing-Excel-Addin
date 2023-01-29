@@ -11,6 +11,6 @@ double Expectation(const std::vector<double>& v);
 
 double Covariance(const std::vector<double>& v1, const std::vector<double>& v2);
 
-double BlackScholesFormula(double S, double K, double r, double T, double sig, int iscall, int div, int isdivdiscrete = 0);
+double BlackScholesFormula(double S, double K, double r, double T, double sig, int iscall, double div, int isdivdiscrete);
 
 #endif

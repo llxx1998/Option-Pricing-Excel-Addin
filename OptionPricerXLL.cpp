@@ -68,6 +68,35 @@ double WINAPI AmericanOptionXLL(int iscall, double r, double sig, double S_0, do
 	return ameop.Pricer();
 }
 
+AddIn EuropeanAnalyticPricer(
+	// Return double, C++ name of function, Excel name.
+	Function(XLL_DOUBLE, "EuropeanOptionXLL", "EuropeanOption")
+	// Array of function arguments.
+	.Arguments({
+		Arg(XLL_DOUBLE, "S", "spot price"),
+		Arg(XLL_DOUBLE, "K", "strike"),
+		Arg(XLL_DOUBLE, "r", "annual risk free rate"),
+		Arg(XLL_DOUBLE, "T", "time to maturity (year)"),
+		Arg(XLL_DOUBLE, "sig", "annual volatility"),
+		Arg(XLL_WORD, "iscall", "1 for call 0 for put"),
+		Arg(XLL_DOUBLE, "div", "dividend (absolute/percentage)"),
+		Arg(XLL_WORD, "isdivdiscrete", "1 for discrete dividend 0 otherwise")
+		})
+		// Function Wizard help.
+	.FunctionHelp("Return the option price.")
+	// Function Wizard category.
+	.Category("OptionPricer")
+	//
+	.Documentation("This function is used to price European Options.")
+);
+// WINAPI calling convention must be specified
+double WINAPI EuropeanOptionXLL(double S, double K, double r, double T, double sig, int iscall, double div, int isdivdiscrete)
+{
+#pragma XLLEXPORT // must be specified to export function
+	return BlackScholesFormula(S, K, r, T, sig, iscall, div, isdivdiscrete);
+}
+
+
 
 // Press Alt-F8 then type 'XLL.MACRO' to call 'xll_macro'
 // See https://xlladdins.github.io/Excel4Macros/
