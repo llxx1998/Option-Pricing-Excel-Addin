@@ -6,6 +6,9 @@ After importing the Excel Add-in, the pricing functions for different kind of op
 
 To date, the following derivatives and corresponding methods are covered:
 
+**European Option**
+- Analytic Solution from BSM Formula
+
 **Asian Option**
 - Monte Carlo Simulation
 - Monte Carlo Simulation with Antithetic Sampling
