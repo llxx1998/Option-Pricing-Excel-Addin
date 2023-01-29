@@ -15,7 +15,8 @@ To date, the following derivatives and corresponding methods are covered:
 **American Option**
 - PDE Approach
 - Binary Tree (upcoming)
-<img width="188" alt="Screen Shot 2023-01-29 at 00 12 17" src="https://user-images.githubusercontent.com/51311870/215306387-f587ad6c-c654-49f9-9603-93f6aa5e4eba.png">
+
+<img width="709" alt="Screen Shot 2023-01-29 at 00 20 01" src="https://user-images.githubusercontent.com/51311870/215306663-aaf5f293-c838-45e7-889b-62fc20948811.png">
 
 Special thanks for the Excel XLL Template from K. Lewis. This repo is for educational purpose only. 
 
