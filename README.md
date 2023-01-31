@@ -13,11 +13,11 @@ To date, the following derivatives and corresponding methods are covered:
 - Monte Carlo Simulation
 - Monte Carlo Simulation with Antithetic Sampling
 - Geometric Average Analytic Pricer
-- Binary Tree (upcoming)
+- *Binary Tree (upcoming)*
 
 **American Option**
 - PDE Approach
-- Binary Tree (upcoming)
+- *Binary Tree (upcoming)*
 
 <img width="709" alt="Screen Shot 2023-01-29 at 00 20 01" src="https://user-images.githubusercontent.com/51311870/215306663-aaf5f293-c838-45e7-889b-62fc20948811.png">
 
@@ -27,7 +27,11 @@ The following modules provide mathmatical support:
 - Expectation: situated in MathUtilities, calculate expected value of certain vector
 - Covariance: situated in MathUtilities, calculate covariance between two vectors
 - Black Scholes: situated in MathUtilities, calculate BSM option value
-- Park Miller (upcoming)
+- *Park Miller (upcoming)*
+  
+In addition to the tags labeled as *(upcoming)*, the following new features will be established soon:
+  - Dividend class
+  - Time class to consider more sophiscated conventions
 
 Special thanks for the Excel XLL Template from K. Lewis. This repo is for educational purpose only. 
 
