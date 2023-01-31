@@ -27,6 +27,7 @@ The following modules provide mathmatical support:
 - Expectation: situated in MathUtilities, calculate expected value of certain vector
 - Covariance: situated in MathUtilities, calculate covariance between two vectors
 - Black Scholes: situated in MathUtilities, calculate BSM option value
+- Park Miller (upcoming)
 
 Special thanks for the Excel XLL Template from K. Lewis. This repo is for educational purpose only. 
 
