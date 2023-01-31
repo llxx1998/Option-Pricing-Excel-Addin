@@ -11,7 +11,7 @@ To date, the following derivatives and corresponding methods are covered:
 
 **Asian Option**
 - Monte Carlo Simulation
-- Monte Carlo Simulation with Antithetic Sampling
+- Monte Carlo Simulation with Control Variate
 - Geometric Average Analytic Pricer
 - *Binary Tree (upcoming)*
 
