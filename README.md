@@ -21,5 +21,12 @@ To date, the following derivatives and corresponding methods are covered:
 
 <img width="709" alt="Screen Shot 2023-01-29 at 00 20 01" src="https://user-images.githubusercontent.com/51311870/215306663-aaf5f293-c838-45e7-889b-62fc20948811.png">
 
+The following modules provide mathmatical support:
+- Box Muller Norm(0, 1) Random Number: situated in MyRandom, one for single random number generation, one for batch generation (return vector<double>)
+- Cumulative Density Distribution of Normal Distribution: situated in MathUtilities, return corresponding CDF value
+- Expectation: situated in MathUtilities, calculate expected value of certain vector
+- Covariance: situated in MathUtilities, calculate covariance between two vectors
+- Black Scholes: situated in MathUtilities, calculate BSM option value
+
 Special thanks for the Excel XLL Template from K. Lewis. This repo is for educational purpose only. 
 
