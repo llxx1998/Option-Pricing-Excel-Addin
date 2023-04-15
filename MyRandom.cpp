@@ -1,17 +1,11 @@
 #include "MyRandom.h"
 
+const double pi = 4.0 * atan(1.0);
+
 double BoxMullerRandNorm() {
-	double result, x, y, sizeSquared;
-
-	do {
-		x = 2.0 * rand() / static_cast<double>(RAND_MAX) - 1;
-		y = 2.0 * rand() / static_cast<double>(RAND_MAX) - 1;
-		sizeSquared = pow(x, 2.0) + pow(y, 2.0);
-	} while (sizeSquared >= 1.0);
-
-	result = x * sqrt(-2.0 * log(sizeSquared) / sizeSquared);
-
-	return result;
+	double U1 = (rand() + 1.0) / (RAND_MAX + 1.0);
+	double U2 = (rand() + 1.0) / (RAND_MAX + 1.0);
+	return sqrt(-2.0 * log(U1)) * cos(2.0 * pi * U2);
 }
 
 std::vector<double> BoxMullerVector(int n) {
